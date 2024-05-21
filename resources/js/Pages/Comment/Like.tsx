@@ -1,8 +1,8 @@
 import { useState } from "react";
-import balanceErd from '../../../../public/balance_erd.png';
+import commentErd from '../../../../public/comment_erd.png';
 import { Head } from "@inertiajs/react";
 
-export default function CreditBalance() {
+export default function Like() {
 
     const [isFullScreen, setIsFullScreen] = useState<boolean>(false);
     const [imageSrc, setImageSrc] = useState<string>("");
@@ -19,17 +19,15 @@ export default function CreditBalance() {
 
     return (
         <>
-            <Head title="Credit Balance 💰" />
+            <Head title="Like Share and Subcribe 👍" />
 
             <div className="bg-gray-900 text-white min-h-screen py-8">
                 <div className="max-w-4xl mx-auto px-4">
-                    <h1 className="text-3xl font-bold mb-4">Question 3</h1>
+                    <h1 className="text-3xl font-bold mb-4">Question 5</h1>
 
                     <p className="text-gray-400 mb-8">
-                        Users have many credits, each credit has a balance column
-                        and created datetime (timezone UTC). Write an SQL statement
-                        to retrieve users’ last credit balance on 31st December
-                        2022.
+                        Users’ have many comments and comments can be liked by other users. 
+                        Write an SQL statement to count how many users liked that comment. 
                     </p>
 
                     <p className="text-gray-400 mb-4">
@@ -40,24 +38,23 @@ export default function CreditBalance() {
                     <div className="bg-gray-800 shadow-md rounded-md overflow-hidden w-full">
                         <div className="p-4 border-b border-gray-700">
                             <img
-                                src={balanceErd}
+                                src={commentErd}
                                 alt="Thumbnail"
                                 className="w-full h-auto cursor-pointer"
                                 onClick={() =>
-                                    handleImageClick(balanceErd)
+                                    handleImageClick(commentErd)
                                 }
                             />
                         </div>
                     </div>
 
                     <p className="text-gray-400 mt-4">
-                        - Also assuming that there will be multiple records per day
-                        which will result in different balance values. We want to get
-                        the last record of the day.
+                        - Also assuming that user_id is unique per comment_id in comment_likes table.
+                        Can be done by applying constraint of composite key unique (user_id, comment_id). 
+                        Which means a user can only like a comment once.
                     </p>
                     <p className="text-gray-400 mt-4">
-                        - 31st December 2022 will also means before entering 1st January
-                        2023 as 00:00 AM.
+                        - Also assuming owner of the comment cannot like own comments.
                     </p>
 
                     <p className="text-gray-400 mt-8">
@@ -68,19 +65,16 @@ export default function CreditBalance() {
                         <div className="p-4 border-b border-gray-700">
                             <pre className="overflow-x-auto">
                                 <code className="language-javascript">
-                                    {`SELECT * 
-    FROM credits 
-    WHERE user_id = ?
-    AND created_at <= '2023-01-01'
-    ORDER BY created_at DESC
-    LIMIT 1;`}
+                                    {`SELECT COUNT(user_id) 
+FROM comment_likes 
+WHERE comment_id = ?;`}
                                 </code>
                             </pre>
                         </div>
                     </div>
 
                     <p className="text-gray-400 mt-8">
-                        - Where '?' is refering to user foreign key id.
+                        - Where '?' is refering to comment foreign key id.
                     </p>
                 </div>
 

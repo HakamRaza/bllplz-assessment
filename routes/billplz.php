@@ -41,3 +41,11 @@ Route::get('credit-balance', function(){
 Route::get('difference', function(){
     return Inertia::render('Difference/Difference');
 });
+
+
+/**
+ * Question 5 Route
+ */
+Route::get('comment-likes', function(){
+    return Inertia::render('Comment/Like');
+});
