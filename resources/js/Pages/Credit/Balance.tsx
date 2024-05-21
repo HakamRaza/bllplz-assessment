@@ -67,13 +67,13 @@ export default function CreditBalance() {
                     <div className="mt-8 bg-gray-800 shadow-md rounded-md overflow-hidden">
                         <div className="p-4 border-b border-gray-700">
                             <pre className="overflow-x-auto">
-                                <code className="language-javascript">
+                                <code className="language-sql">
                                     {`SELECT * 
-    FROM credits 
-    WHERE user_id = ?
-    AND created_at <= '2023-01-01'
-    ORDER BY created_at DESC
-    LIMIT 1;`}
+FROM credits 
+WHERE user_id = ?
+AND created_at <= '2023-01-01'
+ORDER BY created_at DESC
+LIMIT 1;`}
                                 </code>
                             </pre>
                         </div>

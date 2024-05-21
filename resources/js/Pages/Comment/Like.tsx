@@ -64,7 +64,7 @@ export default function Like() {
                     <div className="mt-8 bg-gray-800 shadow-md rounded-md overflow-hidden">
                         <div className="p-4 border-b border-gray-700">
                             <pre className="overflow-x-auto">
-                                <code className="language-javascript">
+                                <code className="language-sql">
                                     {`SELECT COUNT(user_id) 
 FROM comment_likes 
 WHERE comment_id = ?;`}

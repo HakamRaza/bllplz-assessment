@@ -49,3 +49,11 @@ Route::get('difference', function(){
 Route::get('comment-likes', function(){
     return Inertia::render('Comment/Like');
 });
+
+
+/**
+ * Question 5 Route
+ */
+Route::get('snail-climb', function(){
+    return Inertia::render('Snail/Climb');
+});
