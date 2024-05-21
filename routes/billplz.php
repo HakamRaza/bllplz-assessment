@@ -3,6 +3,7 @@
 use App\Http\Controllers\Password\PasswordController;
 use App\Http\Controllers\Pizza\PizzaController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,11 @@ Route::post('password-generator', [PasswordController::class, 'generate']);
  */
 Route::get('pizza-ordering', [PizzaController::class, 'view'])->name('billplz.pizza_ordering');
 Route::post('pizza-ordering', [PizzaController::class, 'addPizza']);
+
+
+/**
+ * Question 3 Route
+ */
+Route::get('credit-balance', function(){
+    return Inertia::render('Credit/Balance');
+});
