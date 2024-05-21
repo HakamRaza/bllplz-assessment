@@ -33,3 +33,11 @@ Route::post('pizza-ordering', [PizzaController::class, 'addPizza']);
 Route::get('credit-balance', function(){
     return Inertia::render('Credit/Balance');
 });
+
+
+/**
+ * Question 4 Route
+ */
+Route::get('difference', function(){
+    return Inertia::render('Difference/Difference');
+});
