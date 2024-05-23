@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+
+  # ------------------------------------------------------------
+  # Laravel App
+  # ------------------------------------------------------------
+  app:
+    container_name: laravel-app
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    environment:
+      - APP_KEY=base64:9i27slFakek3yss555H4k4ML0LfhiUkUZZkAk+YMiFs=
+    env_file:
+      - .env
+    volumes:
+      - vendordata:/var/www/app/vendor
+    restart: unless-stopped
+    networks:
+      - backend
+  
+
+# ------------------------------------------------------------
+# Networks
+# ------------------------------------------------------------
+networks:
+    backend:
+      name: network-backend
+      driver: bridge
+
+# ------------------------------------------------------------
+# Volumes
+# ------------------------------------------------------------
+volumes:
+  vendordata:
+    name: laravel-vendor
